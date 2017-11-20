@@ -17,8 +17,8 @@ class App extends Component {
 		errorMessage: ''
 	}
 
-	fetchResults() {
-		api.fetchMoviesByStringSearch('Starland')
+	fetchResults(string) {
+		api.fetchMoviesByStringSearch(string)
 			.then(json => {
 				if (json.Response === "True") {				
 					this.setState({

@@ -20,3 +20,7 @@ li {
 .app {
   padding: 0 15px;
 }
+
+.error {
+  color: #c00;
+}
