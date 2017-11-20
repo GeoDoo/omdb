@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Main from './components/Main'
 import Welcome from './components/Welcome'
 import SearchForm from './components/SearchForm'
+import ResultsList from './components/ResultsList'
 import Footer from './components/Footer'
 import api from './helpers/api'
 import './App.css';
@@ -24,6 +25,12 @@ class App extends Component {
 			})
 	}
 
+	renderResultsList() {
+		if (this.state.movies) {
+			return <ResultsList className="results-wrapper" results={this.state.movies} />
+		}
+	}
+
   render() {
     return (
       <div className="app">
@@ -31,6 +38,7 @@ class App extends Component {
         <Main> 
         	<Welcome />
         	<SearchForm />
+        	{this.renderResultsList()}
         </Main>
         <Footer />
       </div>
