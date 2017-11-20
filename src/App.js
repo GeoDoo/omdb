@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header'
 import Main from './components/Main'
 import Welcome from './components/Welcome'
+import SearchForm from './components/SearchForm'
 import Footer from './components/Footer'
 import api from './helpers/api'
 import './App.css';
@@ -29,6 +30,7 @@ class App extends Component {
         <Header />
         <Main> 
         	<Welcome />
+        	<SearchForm />
         </Main>
         <Footer />
       </div>
