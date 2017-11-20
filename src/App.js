@@ -4,6 +4,7 @@ import Main from './components/Main'
 import Welcome from './components/Welcome'
 import SearchForm from './components/SearchForm'
 import ResultsList from './components/ResultsList'
+import Pagination from './components/Pagination'
 import Footer from './components/Footer'
 import api from './helpers/api'
 import calculatePages from './helpers/helper-funcs'
@@ -13,12 +14,13 @@ class App extends Component {
 	state = {
 		searchString: '',
 		movies: [],
+		currentPage: 1,
 		totalPages: 0,
 		errorMessage: ''
 	}
 
-	fetchResults(string) {
-		api.fetchMoviesByStringSearch(string)
+	fetchResults(string, num) {
+		api.fetchMoviesByStringSearch(string, num)
 			.then(json => {
 				if (json.Response === "True") {				
 					this.setState({
@@ -31,7 +33,7 @@ class App extends Component {
 						errorMessage: json.Error
 					})
 				}
-			}).catch(error => { // TODO: App.test.js fails without with TypeError: Network request failed
+			}).catch(error => {
 				console.log(error)
 			})
 	}
@@ -48,7 +50,7 @@ class App extends Component {
 		e.preventDefault()
 	
 		if (this.state.searchString) {
-			this.fetchResults(this.state.searchString)
+			this.fetchResults(this.state.searchString, this.state.currentPage)
 		} else {
 			this.setState({
 				errorMessage: "Please add some text and then hit Search"
@@ -62,6 +64,26 @@ class App extends Component {
 		})
 	}
 
+	onPagerItemClick(e) {
+		let pagerClickedLinkNum = [...e.target.parentElement.children].indexOf(e.target) + 1
+
+    if (pagerClickedLinkNum !== this.state.currentPage) {    
+      this.setState({
+        currentPage: pagerClickedLinkNum
+      })
+
+      setTimeout(() => {
+        this.fetchResults(this.state.searchString, this.state.currentPage)
+      }, 100)
+    }
+	}
+
+	renderPager() {
+    if (this.state.totalPages) {
+      return <Pagination pages={this.state.totalPages} activeLink={this.state.currentPage} onClick={this.onPagerItemClick.bind(this)} />
+    }
+  }
+
   render() {
     return (
       <div className="app">
@@ -71,6 +93,7 @@ class App extends Component {
         	<SearchForm 
         		onSubmitForm={this.onSubmitForm.bind(this)} 
         		onChangeInput={this.onChangeInput.bind(this)} />
+        	{this.renderPager()}
         	{this.renderResultsList()}
         </Main>
         <Footer />
