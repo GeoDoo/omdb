@@ -10,4 +10,4 @@ To get your API KEY go to: http://www.omdbapi.com/apikey.aspx, register for one 
 
 After this, create a .env file on your ROOT folder with this key pair:
 
-API_KEY=dummyKey
+REACT_APP_API_KEY=dummyKey
