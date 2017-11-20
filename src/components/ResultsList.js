@@ -18,7 +18,7 @@ class ResultsList extends Component {
 
 	render() {
 		return (
-			<ul className="results">
+			<ul className="results" id="anchor">
 				{this.renderResults()}
 			</ul>
 		)

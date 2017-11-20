@@ -7,7 +7,7 @@ import ResultsList from './components/ResultsList'
 import Pagination from './components/Pagination'
 import Footer from './components/Footer'
 import api from './helpers/api'
-import calculatePages from './helpers/helper-funcs'
+import { calculatePages, scrollToTopOfPager } from './helpers/helper-funcs'
 import './App.css'
 
 class App extends Component {
@@ -67,7 +67,10 @@ class App extends Component {
 	onPagerItemClick(e) {
 		let pagerClickedLinkNum = [...e.target.parentElement.children].indexOf(e.target) + 1
 
+  	scrollToTopOfPager();
+    
     if (pagerClickedLinkNum !== this.state.currentPage) {    
+    	
       this.setState({
         currentPage: pagerClickedLinkNum
       })

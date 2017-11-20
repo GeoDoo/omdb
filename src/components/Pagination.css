@@ -5,6 +5,8 @@
 .pager--item {
 	display: inline-block;
 	margin-right: 5px;
+	padding: 0 5px;
+	cursor: pointer;
 }
 
 .pager--item-active {
