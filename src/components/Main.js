@@ -1,12 +1,9 @@
 import React from 'react'
 
-const Main = () => {
+const Main = (props) => {
 	return (
 		<main id="main" className="main">
-			<h1>OMDB search tool</h1>
-			<p>
-				Welcome, please enter the title of the movie/series/episode you would like to query as free text
-			</p>
+			{props.children}
 		</main>
 	)
 }
