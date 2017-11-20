@@ -5,8 +5,16 @@
 .pager--item {
 	display: inline-block;
 	margin-right: 5px;
-	padding: 0 5px;
-	cursor: pointer;
+	padding: 5px;
+  cursor: pointer;
+  width: 0.625em;
+  text-align: center;
+}
+
+.pager--item-active,
+.pager--item:hover {
+	background: #dd9933;
+	color: #fff;
 }
 
 .pager--item-active {
