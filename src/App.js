@@ -11,12 +11,13 @@ import './App.css'
 
 class App extends Component {
 	state = {
+		searchString: '',
 		movies: [],
 		totalPages: 0,
 		errorMessage: ''
 	}
 
-	componentWillMount() {
+	fetchResults() {
 		api.fetchMoviesByStringSearch('Starland')
 			.then(json => {
 				if (json.Response === "True") {				
@@ -42,13 +43,27 @@ class App extends Component {
     }
 	}
 
+	onSubmitForm(e) {
+		e.preventDefault()
+	
+		this.fetchResults(this.state.searchString)
+	}
+
+	onChangeInput(e) {
+		this.setState({
+			searchString: e.target.value
+		})
+	}
+
   render() {
     return (
       <div className="app">
         <Header />
         <Main> 
         	<Welcome />
-        	<SearchForm />
+        	<SearchForm 
+        		onSubmitForm={this.onSubmitForm.bind(this)} 
+        		onChangeInput={this.onChangeInput.bind(this)} />
         	{this.renderResultsList()}
         </Main>
         <Footer />
