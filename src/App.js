@@ -95,6 +95,7 @@ class App extends Component {
         		onChangeInput={this.onChangeInput.bind(this)} />
         	{this.renderPager()}
         	{this.renderResultsList()}
+        	{this.renderPager()}
         </Main>
         <Footer />
       </div>

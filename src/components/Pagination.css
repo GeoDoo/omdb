@@ -1,0 +1,12 @@
+.pager {
+	margin-bottom: 15px;
+}
+
+.pager--item {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.pager--item-active {
+	font-weight: bold;
+}
