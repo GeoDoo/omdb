@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Header from './components/Header'
 import Main from './components/Main'
 import Welcome from './components/Welcome'
@@ -6,22 +6,28 @@ import SearchForm from './components/SearchForm'
 import ResultsList from './components/ResultsList'
 import Footer from './components/Footer'
 import api from './helpers/api'
-import './App.css';
+import calculatePages from './helpers/helper-funcs'
+import './App.css'
 
 class App extends Component {
 	state = {
 		movies: [],
-		totalResults: 0
+		totalPages: 0
 	}
 
 	componentWillMount() {
 		api.fetchMoviesByStringSearch()
 			.then(json => {
-				console.log(json)
-				this.setState({
-					movies: json.Search,
-					totalResults: json.totalResults
-				})
+				if (json.Response === "True") {				
+					this.setState({
+						movies: json.Search,
+						totalPages: calculatePages(json.totalResults)
+					})
+				} else {
+					console.log('failed')
+				}
+			}).catch(error => {
+				console.log(error)
 			})
 	}
 
@@ -42,8 +48,8 @@ class App extends Component {
         </Main>
         <Footer />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
