@@ -1,0 +1,31 @@
+.results--item {
+	display: flex;
+	flex: 4;
+	flex-direction: row;
+	align-items: flex-start;
+	border: 1px solid #ddd;
+	margin-bottom: 15px;
+	position: relative;
+}
+
+.results--item-poster {
+	flex: 1;
+	max-width: 120px;
+}
+
+.results--item-poster img {
+	margin: 15px;
+}
+
+.results--item-info {
+	flex: 3;
+	padding: 15px;
+}
+
+.results--item-info--inner {
+	padding: 0 15px;
+}
+
+.results--item-type-year {
+	font-style: italic;
+}
