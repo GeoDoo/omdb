@@ -1,4 +1,4 @@
-import calculatePages from './helper-funcs'
+import { calculatePages } from './helper-funcs'
 
 describe('Helper functions', () => {
 	describe('calculatePages function', () => {
