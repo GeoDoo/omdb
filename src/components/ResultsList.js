@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Result from './Result'
+import './ResultsList.css'
 
 class ResultsList extends Component {
 	renderResults() {
