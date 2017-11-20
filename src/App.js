@@ -23,7 +23,8 @@ class App extends Component {
 				if (json.Response === "True") {				
 					this.setState({
 						movies: json.Search,
-						totalPages: calculatePages(json.totalResults)
+						totalPages: calculatePages(json.totalResults),
+						errorMessage: ''
 					})
 				} else {
 					this.setState({
@@ -46,7 +47,13 @@ class App extends Component {
 	onSubmitForm(e) {
 		e.preventDefault()
 	
-		this.fetchResults(this.state.searchString)
+		if (this.state.searchString) {
+			this.fetchResults(this.state.searchString)
+		} else {
+			this.setState({
+				errorMessage: "Please add some title"
+			})
+		}
 	}
 
 	onChangeInput(e) {
