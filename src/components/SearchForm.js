@@ -5,7 +5,7 @@ const SearchForm = (props) => {
 	return (
 		<form className="search-form" onSubmit={props.onSubmitForm}>	
 			<input className="search-input" onChange={props.onChangeInput} />
-			<button>Search</button>
+			<button className="search-button">Search</button>
 		</form>
 	)	
 }

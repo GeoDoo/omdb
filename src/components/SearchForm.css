@@ -1,3 +1,17 @@
 .search-input {
 	margin-bottom: 15px;
+  width: 98%;
+  padding: 1%;
+  font-size: 1em;	
+}
+
+.search-button {
+  margin-bottom: 15px;
+  font-size: 1em;
+  font-family: 'Lobster Two', cursive;
+  border: 0 none;
+  color: #000;
+  background: #dd9933;
+  padding: 7px 15px;
+  cursor: pointer;
 }
