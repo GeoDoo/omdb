@@ -51,7 +51,7 @@ class App extends Component {
 			this.fetchResults(this.state.searchString)
 		} else {
 			this.setState({
-				errorMessage: "Please add some title"
+				errorMessage: "Please add some text and then hit Search"
 			})
 		}
 	}
