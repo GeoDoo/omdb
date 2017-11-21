@@ -4,7 +4,8 @@ import './ResultsList.css'
 
 class ResultsList extends Component {
 	renderResults() {
-		return this.props.results.map(result => {
+		const { results, rememberSearchString } = this.props
+		return results.map(result => {
 			return (
 				<Result 
 					key={result.imdbID}
@@ -12,7 +13,8 @@ class ResultsList extends Component {
 					title={result.Title}
 					poster={result.Poster}
 					type={result.Type}
-					year={result.Year} />
+					year={result.Year}
+					rememberSearchString={rememberSearchString} />
 			)
 		})
 	}

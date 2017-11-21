@@ -15,11 +15,20 @@ class Home extends Component {
 		errorMessage: ''
 	}
 
+	componentWillMount() {
+		const { searchString, currentPage } = JSON.parse(localStorage.getItem('homeState'))
+		if (searchString && currentPage) {
+			this.fetchResults(searchString, currentPage)
+		}
+	}
+
 	fetchResults(string, num) {
 		api.fetchMoviesByStringSearch(string, num)
 			.then(json => {
 				if (json.Response === "True") {				
 					this.setState({
+						searchString: string,
+						currentPage: num,
 						movies: json.Search,
 						totalPages: calculatePages(json.totalResults),
 						errorMessage: ''
@@ -34,11 +43,19 @@ class Home extends Component {
 			})
 	}
 
+	rememberSearchString() {
+		localStorage.clear()
+		localStorage.setItem('homeState', JSON.stringify({
+			searchString: this.state.searchString,
+			currentPage: this.state.currentPage
+		}))
+	}
+
 	renderResultsList() {
 		if (this.state.errorMessage) {
       return <p className="error">{this.state.errorMessage}</p>
     } else {
-      return <ResultsList className="results-wrapper" results={this.state.movies} />
+      return <ResultsList className="results-wrapper" results={this.state.movies} rememberSearchString={this.rememberSearchString.bind(this)} />
     }
 	}
 
@@ -89,7 +106,8 @@ class Home extends Component {
 				<Welcome />
 	    	<SearchForm 
 	    		onSubmitForm={this.onSubmitForm.bind(this)} 
-	    		onChangeInput={this.onChangeInput.bind(this)} />
+	    		onChangeInput={this.onChangeInput.bind(this)}
+	    		givenInputValue={this.state.searchString} />
 	    	{this.renderPager()}
 	    	{this.renderResultsList()}
 	    	{this.renderPager()}

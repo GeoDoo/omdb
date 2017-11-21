@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import imgPlaceholder from '../assets/images/n_a.png'
 import './Result.css'
 
-const Result = ({ id, title, poster, year, type }) => {
+const Result = ({ id, title, poster, year, type, rememberSearchString }) => {
 	let posterSrc = poster === 'N/A' ? imgPlaceholder : poster
 
 	return (
-		<li className="results--item">
+		<li className="results--item" onClick={rememberSearchString}>
 			<Link to={`/imdb-id/${id}`}>
 				<div className="results--item-poster">
 					<img src={posterSrc} alt={title} />
