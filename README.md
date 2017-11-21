@@ -23,5 +23,4 @@ REACT_APP_API_KEY=yourKey,
 ```sh
 npm start
 
-```sh
 npm test
