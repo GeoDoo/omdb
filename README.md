@@ -4,7 +4,7 @@ Query OMDB (Open Movie DataBase) and find movies, TV series and episodes or even
 
 The API can be found here: http://www.omdbapi.com
 
-## Setup
+## Application Setup
 
 ### Get your API KEY
 
@@ -14,12 +14,12 @@ To get your API KEY go to: http://www.omdbapi.com/apikey.aspx, register for one 
 
 After this, create a .env file on your ROOT folder with this key pair:
 
-REACT_APP_API_KEY=dummyKey
+REACT_APP_API_KEY=yourKey,
 
 ### Run scripts
 
-npm install
-
+```sh
 npm start
 
+```sh
 npm test
