@@ -1,8 +1,0 @@
-codecov:
-  disable_default_path_fixes: true
-coverage:
-  status:
-    project:
-      default:
-        target: auto
-        if_not_found: success
