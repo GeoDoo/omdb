@@ -16,8 +16,9 @@ class Home extends Component {
 	}
 
 	componentWillMount() {
-		const { searchString, currentPage } = JSON.parse(localStorage.getItem('homeState'))
-		if (searchString && currentPage) {
+		const cache = localStorage.getItem('homeState')
+		if (cache) {
+			const { searchString, currentPage } = JSON.parse(cache)
 			this.fetchResults(searchString, currentPage)
 		}
 	}
