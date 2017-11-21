@@ -1,5 +1,7 @@
 # OMDB search tool
 
+[![Build Status](https://travis-ci.org/GeoDoo/omdb.svg?branch=master)](https://travis-ci.org/GeoDoo/omdb)
+
 Query OMDB (Open Movie DataBase) and find movies, TV series and episodes or even games that you have been seeking forever with ease!
 
 The API can be found here: http://www.omdbapi.com
