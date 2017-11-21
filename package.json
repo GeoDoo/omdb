@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "codecov": "3.0.0",
     "cross-env": "5.1.1",
     "ghooks": "2.0.0",
     "react-scripts": "1.0.17"
@@ -18,11 +19,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "coverage": "react-scripts test --env=jsdom --coverage",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "test:single": "cross-env CI=true react-scripts test --env=jsdom"
   },
   "config": {
     "ghooks": {
-      "pre-commit": "npm run test:single"
+      "pre-commit": "npm run test:single && npm run coverage"
     }
   }
 }
