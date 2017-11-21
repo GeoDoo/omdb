@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Welcome from './Welcome'
-import SearchForm from './SearchForm'
-import ResultsList from './ResultsList'
-import Pagination from './Pagination'
+import Welcome from '../components/Welcome'
+import SearchForm from '../components/SearchForm'
+import ResultsList from '../components/ResultsList'
+import Pagination from '../components/Pagination'
 import api from '../helpers/api'
 import { calculatePages, scrollToTopOfPager } from '../helpers/helper-funcs'
 
