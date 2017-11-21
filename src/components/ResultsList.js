@@ -8,6 +8,7 @@ class ResultsList extends Component {
 			return (
 				<Result 
 					key={result.imdbID}
+					id={result.imdbID}
 					title={result.Title}
 					poster={result.Poster}
 					type={result.Type}

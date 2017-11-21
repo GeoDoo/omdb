@@ -1,4 +1,4 @@
-.results--item {
+.results--item a {
 	display: flex;
 	flex: 4;
 	flex-direction: row;
@@ -6,6 +6,7 @@
 	border: 1px solid #ddd;
 	margin-bottom: 15px;
 	position: relative;
+	color: #000;
 }
 
 .results--item-poster {
