@@ -1,10 +1,14 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import Home from './Home'
 import './Main.css'
 
-const Main = (props) => {
+const Main = () => {
 	return (
 		<main id="main" className="main">
-			{props.children}
+			<Switch>
+	      <Route exact path='/' component={Home}/>
+	    </Switch>
 		</main>
 	)
 }
