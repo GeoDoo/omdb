@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../helpers/api'
+import imgPlaceholder from '../assets/images/n_a.png'
 import './ResultInfoPage.css'
 
 class ResultInfoPage extends Component {
@@ -72,6 +73,13 @@ class ResultInfoPage extends Component {
 		})
 	}
 
+	renderPoster() {
+		const { poster, title } = this.state
+		let posterSrc = poster === 'N/A' ? imgPlaceholder : poster
+
+		return <img src={posterSrc} alt={title} title={title} />
+	}
+
 	render() {
 		const { 
 			title,
@@ -87,7 +95,6 @@ class ResultInfoPage extends Component {
 			language,
 			country,
 			awards,
-			poster,
 			metascore,
 			imdbRating,
 			imdbVotes,
@@ -103,7 +110,7 @@ class ResultInfoPage extends Component {
 			<div className="result-info-page">
 				<div className="result-info-page--top">
 					<div className="result-info-page--left">
-						<img src={poster} alt={title} />
+						{this.renderPoster()}
 					</div>				
 					<div className="result-info-page--right">
 						<h2>{title}</h2>
@@ -149,7 +156,7 @@ class ResultInfoPage extends Component {
 								</ul>
 							</div>
 							<p><span className="labels">Metascore: </span>{metascore}</p>
-							<div className="sections-nested">
+							<div className="sections-imdb">
 								<h4>IMDB</h4>
 								<div className="indent">
 									<p><span className="labels">ID: </span>{imdbID}</p>

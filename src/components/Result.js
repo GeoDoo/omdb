@@ -10,7 +10,7 @@ const Result = ({ id, title, poster, year, type, rememberSearchString }) => {
 		<li className="results--item" onClick={rememberSearchString}>
 			<Link to={`/imdb-id/${id}`}>
 				<div className="results--item-poster">
-					<img src={posterSrc} alt={title} />
+					<img src={posterSrc} alt={title} title={title} />
 				</div>
 				<div className="results--item-info">
 					<div className="results--item-info--inner">
