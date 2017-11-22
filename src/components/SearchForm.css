@@ -5,15 +5,31 @@
   font-size: 1em;	
 }
 
-.search-button {
-  margin-bottom: 15px;
+.button {
   font-size: 1em;
   font-family: 'Lobster Two', cursive;
+  padding: 7px 15px;
   border: 0 none;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.reset-button {
+  color: #fff;
+  background: #c00;  
+  border: 1px solid #c00;  
+}
+
+.reset-button:hover {
+  color: #c00;
+  background: #fff;
+}
+
+.search-button {
   color: #000;
   background: #dd9933;
-  padding: 7px 15px;
-  cursor: pointer;
+  border: 1px solid #dd9933;  
+  margin-right: 15px;
 }
 
 .search-button:hover {

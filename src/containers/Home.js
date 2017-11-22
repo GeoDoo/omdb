@@ -52,19 +52,27 @@ class Home extends Component {
 		}))
 	}
 
-	renderResultsList() {
-		if (this.state.errorMessage) {
-      return <p className="error">{this.state.errorMessage}</p>
-    } else {
-      return <ResultsList className="results-wrapper" results={this.state.movies} rememberSearchString={this.rememberSearchString.bind(this)} />
-    }
-	}
+  onResetForm(e) {
+		e.preventDefault()
+
+ 		setTimeout(() => {
+  		sessionStorage.clear()
+	  	this.setState({
+	  		searchString: '',
+				movies: [],
+				currentPage: 1,
+				totalPages: 0,
+				errorMessage: 'Everything is reset! Please type your query'
+	  	})
+ 		}, 100) 
+  }
 
 	onSubmitForm(e) {
 		e.preventDefault()
 	
 		if (this.state.searchString) {
 			this.fetchResults(this.state.searchString, this.state.currentPage)
+			this.rememberSearchString()
 		} else {
 			this.setState({
 				errorMessage: "Please add some text and then hit Search"
@@ -100,6 +108,14 @@ class Home extends Component {
     }
   }
 
+  renderResultsList() {
+		if (this.state.errorMessage) {
+      return <p className="error">{this.state.errorMessage}</p>
+    } else {
+      return <ResultsList className="results-wrapper" results={this.state.movies} rememberSearchString={this.rememberSearchString.bind(this)} />
+    }
+	}
+
 	render() {
 		return(
 			<div>
@@ -107,7 +123,8 @@ class Home extends Component {
 	    	<SearchForm 
 	    		onSubmitForm={this.onSubmitForm.bind(this)} 
 	    		onChangeInput={this.onChangeInput.bind(this)}
-	    		givenInputValue={this.state.searchString} />
+	    		givenInputValue={this.state.searchString}
+	    		onResetForm={this.onResetForm.bind(this)} />
 	    	{this.renderPager()}
 	    	{this.renderResultsList()}
 	    	{this.renderPager()}
