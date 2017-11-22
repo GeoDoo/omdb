@@ -20,9 +20,13 @@ REACT_APP_API_KEY=yourKey (replace only yourKey with the actual key)
 
 ### Available scripts
 
+To run the development server 
+
 ```sh
 npm start
 ```
+To run the tests
+
 ```sh
 npm test
 ```
