@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Play');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Lobster+Two');
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lobster Two', cursive;
+  font-family: 'Play', sans-serif;
   background: #f5f5f5;
 }
 

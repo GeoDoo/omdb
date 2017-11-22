@@ -101,33 +101,35 @@ class ResultInfoPage extends Component {
 		return (
 			<div className="result-info-page">
 				<h1>{title}</h1>
-				<aside>
-					<p>{year}</p>
-					<p>{rated}</p>
-					<p>{released}</p>
-					<p>{runtime}</p>
-					<p>{genre}</p>
-					<p>{director}</p>
-					<p>{writer}</p>
-					<p>{actors}</p>
-					<p>{plot}</p>
-					<p>{language}</p>
-					<p>{country}</p>
-					<p>{awards}</p>
-					<p><img src={poster} alt={title} /></p>
-					<ul>
-						{this.renderRatings()}
-					</ul>
-					<p>{metascore}</p>
-					<p>{imdbRating}</p>
-					<p>{imdbVotes}</p>
-					<p>{imdbID}</p>
-					<p>{type}</p>
-					<p>{DVD}</p>
-					<p>{boxOffice}</p>
-					<p>{production}</p>
-					<p>{website}</p>
-				</aside>
+				<div>
+					<div><img src={poster} alt={title} /></div>				
+					<aside>
+						<p>{year}</p>
+						<p>{rated}</p>
+						<p>{released}</p>
+						<p>{runtime}</p>
+						<p>{genre}</p>
+						<p>{director}</p>
+						<p>{writer}</p>
+						<p>{actors}</p>
+						<p>{plot}</p>
+						<p>{language}</p>
+						<p>{country}</p>
+						<p>{awards}</p>
+						<ul>
+							{this.renderRatings()}
+						</ul>
+						<p>{metascore}</p>
+						<p>{imdbRating}</p>
+						<p>{imdbVotes}</p>
+						<p>{imdbID}</p>
+						<p>{type}</p>
+						<p>{DVD}</p>
+						<p>{boxOffice}</p>
+						<p>{production}</p>
+						<p>{website}</p>
+					</aside>
+				</div>
 			</div>
 		)
 	}
