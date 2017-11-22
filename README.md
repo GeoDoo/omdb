@@ -18,9 +18,15 @@ After this, create a .env file on your ROOT folder with this key pair:
 
 REACT_APP_API_KEY=yourKey (replace only yourKey with the actual key)
 
-### Run scripts
+### Available scripts
 
 ```sh
 npm start
 
+```sh
 npm test
+
+To create a production build, use 
+
+```sh
+npm run build
