@@ -22,9 +22,12 @@ REACT_APP_API_KEY=yourKey (replace only yourKey with the actual key)
 
 ```sh
 npm start
+```
+```sh
 npm test
-
+```
 To create a production build, use 
 
 ```sh
 npm run build
+```
