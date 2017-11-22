@@ -1,16 +1,13 @@
-.result-info-page--top {
-	display: flex;
-	flex-direction: row;
-	flex: 5;
-}
-
 .result-info-page--left {
-	flex: 2;
+	margin-bottom: 15px;
+	text-align: center;
+	padding: 15px;
+	border: 1px solid #ddd;
+	background: #fff;
 }
 
-.result-info-page--right {
-	flex: 3;
-	padding-left: 15px;
+.result-info-page--left img {
+	width: 100%;
 }
 
 .labels {
@@ -21,4 +18,37 @@
 	font-size: 120%;
 	display: block;
 	margin-bottom: 5px;
+}
+
+.justify {
+	text-align: justify;
+}
+
+.indent {
+	padding-left: 10px;
+}
+
+.sections {
+	background: #fff;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+}
+
+@media all and (min-width: 640px) {
+	.result-info-page--top {
+		display: flex;
+		flex-direction: row;
+		flex: 5;
+	}
+
+	.result-info-page--left {
+		flex: 2;
+	}
+
+	.result-info-page--right {
+		flex: 3;
+		padding-left: 15px;
+	}
+
 }

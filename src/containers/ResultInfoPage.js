@@ -107,33 +107,66 @@ class ResultInfoPage extends Component {
 					</div>				
 					<div className="result-info-page--right">
 						<h2>{title}</h2>
-						<p><span className="labels">Year: </span>{year}</p>
-						<p><span className="labels">Released: </span>{released}</p>
-						<p><span className="labels">Runtime: </span>{runtime}</p>
-						<p><span className="labels">Genre: </span>{genre}</p>
-						<p><span className="labels">Director: </span>{director}</p>
-						<p><span className="labels">Writer: </span>{writer}</p>
-						<p><span className="labels">Actors: </span>{actors}</p>
+						<div className="indent">
+							<p><span className="labels">Year: </span>{year}</p>
+							<p><span className="labels">Released: </span>{released}</p>
+							<p><span className="labels">Runtime: </span>{runtime}</p>
+							<p><span className="labels">Type: </span>{type}</p>
+							<p><span className="labels">Genre: </span>{genre}</p>
+							<p><span className="labels">Director: </span>{director}</p>
+							<p><span className="labels">Writer: </span>{writer}</p>
+							<p><span className="labels">Actors: </span>{actors}</p>
+						</div>
 					</div>
 				</div>
 				<div className="result-info-page--bottom">
-					<p><span className="labels label-top">Plot </span>{plot}</p>
-					<p><span className="labels">Language: </span>{language}</p>
-					<p><span className="labels">Country: </span>{country}</p>
-					<p><span className="labels">Awards: </span>{awards}</p>
-					<p><span className="labels">Rated: </span>{rated}</p>
-					<ul>
-						{this.renderRatings()}
-					</ul>
-					<p><span className="labels">Metascore: </span>{metascore}</p>
-					<p><span className="labels">IMDB Rating: </span>{imdbRating}</p>
-					<p><span className="labels">IMDB Votes: </span>{imdbVotes}</p>
-					<p><span className="labels">IMDB ID: </span>{imdbID}</p>
-					<p><span className="labels">Type: </span>{type}</p>
-					<p><span className="labels">DVD: </span>{DVD}</p>
-					<p><span className="labels">Box Office: </span>{boxOffice}</p>
-					<p><span className="labels">Production: </span>{production}</p>
-					<p><span className="labels">Website: </span>{website}</p>
+					<div className="sections">
+						<h3>Plot</h3>
+						<p className="justify">{plot}</p>
+					</div>
+					<div className="sections">
+						<h3>Production</h3>
+						<div className="indent">
+							<p><span className="labels">Production: </span>{production}</p>
+							<p><span className="labels">Language: </span>{language}</p>
+							<p><span className="labels">Country: </span>{country}</p>
+						</div>
+					</div>
+					<div className="sections">
+						<h3>Awards</h3>
+						<div className="indent">
+							<p><span className="labels">Awards: </span>{awards}</p>
+						</div>
+					</div>
+					<div className="sections">
+						<h3>Ratings</h3>
+						<div className="indent">
+							<p><span className="labels">Rated: </span>{rated}</p>
+							<div>
+								<span className="labels">Other ratings: </span>
+								<ul>
+									{this.renderRatings()}
+								</ul>
+							</div>
+							<p><span className="labels">Metascore: </span>{metascore}</p>
+							<div className="sections-nested">
+								<h4>IMDB</h4>
+								<div className="indent">
+									<p><span className="labels">ID: </span>{imdbID}</p>
+									<p><span className="labels">Votes: </span>{imdbVotes}</p>
+									<p><span className="labels">Rating: </span>{imdbRating}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div className="sections">
+						<h3>Other info</h3>
+						<div className="indent">
+							<p><span className="labels">DVD: </span>{DVD}</p>
+							<p><span className="labels">Box Office: </span>{boxOffice}</p>
+							<p><span className="labels">Website: </span>{website}</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		)
