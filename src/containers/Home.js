@@ -16,7 +16,7 @@ class Home extends Component {
 	}
 
 	componentWillMount() {
-		const cache = localStorage.getItem('homeState')
+		const cache = sessionStorage.getItem('homeState')
 		if (cache) {
 			const { searchString, currentPage } = JSON.parse(cache)
 			this.fetchResults(searchString, currentPage)
@@ -45,8 +45,8 @@ class Home extends Component {
 	}
 
 	rememberSearchString() {
-		localStorage.clear()
-		localStorage.setItem('homeState', JSON.stringify({
+		sessionStorage.clear()
+		sessionStorage.setItem('homeState', JSON.stringify({
 			searchString: this.state.searchString,
 			currentPage: this.state.currentPage
 		}))
@@ -83,8 +83,7 @@ class Home extends Component {
 
   	scrollToTopOfPager();
     
-    if (pagerClickedLinkNum !== this.state.currentPage) {    
-    	
+    if (pagerClickedLinkNum !== this.state.currentPage) {        	
       this.setState({
         currentPage: pagerClickedLinkNum
       })
