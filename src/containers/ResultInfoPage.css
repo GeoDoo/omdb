@@ -1,0 +1,24 @@
+.result-info-page--top {
+	display: flex;
+	flex-direction: row;
+	flex: 5;
+}
+
+.result-info-page--left {
+	flex: 2;
+}
+
+.result-info-page--right {
+	flex: 3;
+	padding-left: 15px;
+}
+
+.labels {
+	font-family: 'Lobster Two', cursive;
+}
+
+.label-top {
+	font-size: 120%;
+	display: block;
+	margin-bottom: 5px;
+}

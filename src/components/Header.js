@@ -6,6 +6,7 @@ const Header = () => {
 	return (
 		<header className="header">
 			<img className="logo" src={logo} alt="The Open Movie Database" />
+			<h1>OMDB search tool</h1>
 		</header>
 	)
 }
