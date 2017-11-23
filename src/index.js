@@ -1,14 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
-import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import omdbApp from './reducers'
+import App from './App'
+import './index.css'
+import registerServiceWorker from './registerServiceWorker'
+
+let store = createStore(omdbApp)
 
 ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('root')  || document.createElement('div'));
+  <App store={store} />
+), document.getElementById('root')  || document.createElement('div'))
 
-registerServiceWorker();
+registerServiceWorker()
