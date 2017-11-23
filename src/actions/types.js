@@ -1,1 +1,1 @@
-export SEARCH_BY_TITLE = 'search_by_title'
+export const SEARCH_BY_TITLE = 'search_by_title'
