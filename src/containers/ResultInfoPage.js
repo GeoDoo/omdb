@@ -63,6 +63,8 @@ class ResultInfoPage extends Component {
 						production: json.Production,
 						website: json.Website
 					})
+				} else {
+					this.props.history.push('/not-found')
 				}
 			})
 	}
