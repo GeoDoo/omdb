@@ -4,130 +4,66 @@ import * as actions from '../actions'
 import Welcome from '../components/Welcome'
 import SearchForm from '../components/SearchForm'
 import ResultsList from '../components/ResultsList'
-// import Pagination from '../components/Pagination'
+import Pagination from '../components/Pagination'
 import { scrollToTopOfPager } from '../helpers/helper-funcs'
 
 class Home extends Component {
-	// state = {
-	// 	searchString: '',
-	// 	movies: [],
-	// 	currentPage: 1,
-	// 	totalPages: 0,
-	// 	errorMessage: ''
-	// }
-
-	componentWillMount() {
-		// const cache = sessionStorage.getItem('homeState')
-		// if (cache) {
-		// 	const { searchString, currentPage } = JSON.parse(cache)
-		// 	this.props.fetchResults(searchString, currentPage)
-		// 	debugger
-		// }
-	}
-
-	// fetchResults(string, num) {
-	// 	api.fetchMoviesByStringSearch(string, num)
-	// 		.then(json => {
-	// 			if (json.Response === "True") {				
-	// 				this.setState({
-	// 					searchString: string,
-	// 					currentPage: num,
-	// 					movies: json.Search,
-	// 					totalPages: calculatePages(json.totalResults),
-	// 					errorMessage: ''
-	// 				})
-	// 			} else {
-	// 				this.setState({
-	// 					errorMessage: json.Error
-	// 				})
-	// 			}
-	// 		}).catch(error => {
-	// 			console.log(error)
-	// 		})
-	// }
-
-	rememberSearchString() {
-		sessionStorage.clear()
-		sessionStorage.setItem('homeState', JSON.stringify({
-			searchString: this.state.searchString,
-			currentPage: this.state.currentPage
-		}))
-	}
-
   onResetForm(e) {
 		e.preventDefault()
 
- 		setTimeout(() => {
-  		sessionStorage.clear()
-	  	this.setState({
-	  		searchString: '',
-				movies: [],
-				currentPage: 1,
-				totalPages: 0,
-				errorMessage: 'Everything is reset! Please type your query'
-	  	})
- 		}, 100) 
+		// this.props.resetAll()
   }
 
 	onSubmitForm(e) {
 		e.preventDefault()
 	
-		if (this.state.searchString) {
-			this.props.fetchResults(this.state.searchString, this.state.currentPage)
-			this.rememberSearchString()
+		if (this.props.searchString.value) {
+			this.props.fetchResults(this.props.searchString.value, this.props.pager.active)
 		} else {
-			this.setState({
-				errorMessage: "Please add some text and then hit Search"
-			})
+			this.props.setErrorMessage('Please type some search keywords for the title you want to find')
 		}
 	}
 
-	onChangeInput(e) {
-		this.setState({
-			searchString: e.target.value
-		})
-	}
-
 	onPagerItemClick(e) {
-		let pagerClickedLinkNum = [...e.target.parentElement.children].indexOf(e.target) + 1
+		let pagerClickedLinkNum = this.props.setActiveLink(e)
 
   	scrollToTopOfPager();
     
-    if (pagerClickedLinkNum !== this.state.currentPage) {        	
-      this.setState({
-        currentPage: pagerClickedLinkNum
-      })
-
-      setTimeout(() => {
-        this.props.fetchResults(this.state.searchString, this.state.currentPage)
-      }, 100)
+    if (pagerClickedLinkNum !== this.props.pager.active) {        	
+      this.props.fetchResults(this.props.searchString, this.props.pager.active)
     }
 	}
 
 	renderPager() {
-    // if (this.state.totalPages) {
-    //   return <Pagination pages={this.state.totalPages} activeLink={this.state.currentPage} onClick={this.onPagerItemClick.bind(this)} />
-    // }
+    if (this.props.results.totalPages) {
+      return <Pagination pages={this.props.results.totalPages} activeLink={this.props.pager.active} onClick={this.onPagerItemClick.bind(this)} />
+    }
   }
 
   renderResultsList() {
-		// if (this.state.errorMessage) {
-  //     return <p className="error">{this.state.errorMessage}</p>
-  //   } else {
-      return <ResultsList className="results-wrapper" results={this.props.home.movies} rememberSearchString={this.rememberSearchString.bind(this)} />
-    // }
+  	if (this.props.results.movies.length) {
+      return <ResultsList className="results-wrapper" results={this.props.results.movies} />
+  	}
+
+		if (this.props.results.errorMessage) {
+      return <p className="error">{this.props.results.errorMessage}</p>
+    } 
+
+    if (this.props.customError.text) {
+      return <p className="error">{this.props.customError.text}</p>
+    } 
 	}
 
 	render() {
-		// console.log('State', this.state)
+		// console.log('State', this.props)
 		// console.log('Props', this.props)
 		return(
 			<div>
 				<Welcome />
 	    	<SearchForm 
 	    		onSubmitForm={this.onSubmitForm.bind(this)} 
-	    		onChangeInput={this.onChangeInput.bind(this)}
-	    		// givenInputValue={this.state.searchString}
+	    		onChangeInput={this.props.setSearchString}
+	    		givenInputValue={this.props.searchString.value}
 	    		onResetForm={this.onResetForm.bind(this)} />
 	    	{this.renderPager()}
 	    	{this.renderResultsList()}
@@ -139,7 +75,10 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		home: state.home
+		searchString: state.homeSearchString,
+		results: state.homeState,
+		pager: state.homePagerActiveLink,
+		customError: state.homeError
 	}
 }
 

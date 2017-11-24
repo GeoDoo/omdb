@@ -1,1 +1,5 @@
 export const SEARCH_BY_TITLE = 'search_by_title'
+export const SET_SEARCH_STRING = 'set_search_string'
+export const SET_ACTIVE_LINK = 'set_active_link'
+export const SET_ERROR_MESSAGE = 'set_error_message'
+export const RESET_ALL = 'reset_all'
