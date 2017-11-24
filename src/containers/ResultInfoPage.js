@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import * as actions from '../actions'
 import api from '../helpers/api'
 import imgPlaceholder from '../assets/images/n_a.png'
 import './ResultInfoPage.css'
@@ -71,7 +73,8 @@ class ResultInfoPage extends Component {
 	}
 
 	clearResults() {
-		sessionStorage.clear()
+		// sessionStorage.clear()
+		this.props.resetAll()
 	}
 
 	renderRatings() {
@@ -192,4 +195,4 @@ class ResultInfoPage extends Component {
 	}
 }
 
-export default ResultInfoPage
+export default connect(null, actions)(ResultInfoPage)
