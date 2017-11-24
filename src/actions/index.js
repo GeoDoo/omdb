@@ -4,15 +4,16 @@ import {
 	SET_SEARCH_STRING,
 	SET_ACTIVE_LINK,
 	SET_ERROR_MESSAGE,
-	RESET_ALL
+	RESET_ALL,
+	GET_RESULT_INFO_PAGE
 } from './types'
 
 export const fetchResults = (string, num) => {
 	const request = api.fetchMoviesByStringSearch(string, num)
-	return ({
+	return {
 		type: SEARCH_BY_TITLE,
 		payload: request
-	})
+	}
 }
 
 export const setSearchString = (e) => {
@@ -39,5 +40,13 @@ export const setErrorMessage = (message) => {
 export const resetAll = () => {
 	return {
 		type: RESET_ALL
+	}
+}
+
+export const getResultInfoPage = (id) => {
+	const request = api.fetchMovieByImdbID(id)
+	return {
+		type: GET_RESULT_INFO_PAGE,
+		payload: request
 	}
 }

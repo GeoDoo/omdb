@@ -2,74 +2,17 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-import api from '../helpers/api'
 import imgPlaceholder from '../assets/images/n_a.png'
 import './ResultInfoPage.css'
 
 class ResultInfoPage extends Component {
-	state = {
-		title: '',
-		year: '',
-		rated: '',
-		released: '',
-		runtime: '',
-		genre: '',
-		director: '',
-		writer: '',
-		actors: '',
-		plot: '',
-		language: '',
-		country: '',
-		awards: '',
-		poster: '',
-		ratings: [],
-		metascore: '',
-		imdbRating: '',
-		imdbVotes: '',
-		imdbID: '',
-		type: '',
-		DVD: '',
-		boxOffice: '',
-		production: '',
-		website: ''
-	}
-
 	componentWillMount() {
 		const { id } = this.props.match.params
 
-		api.fetchMovieByImdbID(id)
-			.then(json => {
-				if (json.Response === "True") {
-					this.setState({
-						title: json.Title,
-						year: json.Year,
-						rated: json.Rated,
-						released: json.Released,
-						runtime: json.Runtime,
-						genre: json.Genre,
-						director: json.Director,
-						writer: json.Writer,
-						actors: json.Actors,
-						plot: json.Plot,
-						language: json.Language,
-						country: json.Country,
-						awards: json.Awards,
-						poster: json.Poster,
-						ratings: json.Ratings,
-						metascore: json.Metascore,
-						imdbRating: json.imdbRating,
-						imdbVotes: json.imdbVotes,
-						imdbID: json.imdbID,
-						type: json.Type,
-						DVD: json.DVD,
-						boxOffice: json.BoxOffice,
-						production: json.Production,
-						website: json.Website
-					})
-				} else {
-					this.props.history.push('/not-found')
-				}
-			})
+		this.props.getResultInfoPage(id)
+		// if (!this.props.info.imdbID) {
+		// 	this.props.history.push('/not-found')
+		// }		
 	}
 
 	clearResults() {
@@ -78,13 +21,15 @@ class ResultInfoPage extends Component {
 	}
 
 	renderRatings() {
-		return this.state.ratings.map(rating => {
-			return <li key={rating.Source}>{rating.Source}: {rating.Value}</li>
-		})
+		if (this.props.info.ratings) {
+			return this.props.info.ratings.map(rating => {
+				return <li key={rating.Source}>{rating.Source}: {rating.Value}</li>
+			})
+		}
 	}
 
 	renderPoster() {
-		const { poster, title } = this.state
+		const { poster, title } = this.props.info
 		let posterSrc = poster === 'N/A' ? imgPlaceholder : poster
 
 		return <img src={posterSrc} alt={title} title={title} />
@@ -114,7 +59,7 @@ class ResultInfoPage extends Component {
 			boxOffice,
 			production,
 			website
-		 } = this.state
+		 } = this.props.info
 
 		return (
 			<div>
@@ -195,4 +140,10 @@ class ResultInfoPage extends Component {
 	}
 }
 
-export default connect(null, actions)(ResultInfoPage)
+const mapStateToProps = (state) => {
+	return {
+		info: state.resultInfoPage
+	}
+}
+
+export default connect(mapStateToProps, actions)(ResultInfoPage)
