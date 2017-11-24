@@ -5,6 +5,7 @@ import totalPagesReducer from './total-pages-reducer'
 import activePageReducer from './active-page-reducer'
 import errorMessageReducer from './error-message-reducer'
 import resultInfoPageReducer from './result-info-page-reducer'
+import redirectReducer from './redirect-reducer'
 
 const omdbApp = combineReducers({
   searchString: searchStringReducer,
@@ -12,7 +13,8 @@ const omdbApp = combineReducers({
   totalPages: totalPagesReducer,
   currentPage: activePageReducer,
   errorMessage: errorMessageReducer,
-  resultInfoPage: resultInfoPageReducer
+  resultInfoPage: resultInfoPageReducer,
+  redirect: redirectReducer
 })
 
 export default omdbApp

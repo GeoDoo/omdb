@@ -10,13 +10,14 @@ class ResultInfoPage extends Component {
 		const { id } = this.props.match.params
 
 		this.props.getResultInfoPage(id)
-		// if (!this.props.info.imdbID) {
-		// 	this.props.history.push('/not-found')
-		// }		
+		setTimeout(() => {
+			if (this.props.redirect) {
+				this.props.history.push('/not-found')	
+			}
+		}, 500)
 	}
 
 	clearResults() {
-		// sessionStorage.clear()
 		this.props.resetAll()
 	}
 
@@ -142,7 +143,8 @@ class ResultInfoPage extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		info: state.resultInfoPage
+		info: state.resultInfoPage,
+		redirect: state.redirect
 	}
 }
 
