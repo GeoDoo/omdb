@@ -1,16 +1,16 @@
 import { combineReducers } from 'redux'
-import searchByTitleReducer from './search-by-title-reducer'
-import setSearchStringReducer from './set-search-string-reducer'
-import setActiveLinkReducer from './set-active-link-reducer'
-import setErrorMessageReducer from './set-error-message-reducer'
-import resetAllReducer from './reset-all-reducer'
+import searchStringReducer from './search-string-reducer'
+import moviesReducer from './movies-reducer'
+import totalPagesReducer from './total-pages-reducer'
+import activePageReducer from './active-page-reducer'
+import errorMessageReducer from './error-message-reducer'
 
 const omdbApp = combineReducers({
-  homeState: searchByTitleReducer,
-  homeSearchString: setSearchStringReducer,
-  homePagerActiveLink: setActiveLinkReducer,
-  homeError: setErrorMessageReducer,
-  homeReset: resetAllReducer
+  searchString: searchStringReducer,
+  movies: moviesReducer,
+  totalPages: totalPagesReducer,
+  currentPage: activePageReducer,
+  errorMessage: errorMessageReducer
 })
 
 export default omdbApp

@@ -1,16 +1,13 @@
-import { SET_ACTIVE_LINK } from '../actions/types'
+import { SET_ACTIVE_LINK, RESET_ALL } from '../actions/types'
 
-const initialState = {
-	active: 1
-}
+const initialState = 1
 
 const setActiveLinkReducer = (state = initialState, action) => {
 	switch(action.type) {
 		case SET_ACTIVE_LINK:
-			return {
-				...state,
-				active: action.payload
-			}
+			return action.payload
+		case RESET_ALL:
+			return initialState
 		default:
 			return state
 	}
