@@ -19,8 +19,6 @@ class Home extends Component {
 	
 		if (this.props.searchString) {
 				this.props.fetchResults(this.props.searchString, this.props.currentPage)
-		} else if (this.props.searchString !== '' && this.props.movies.length === 0) {
-			console.log('AAAAAAAAAAAAAA')
 		} else {
 			this.props.setErrorMessage('Please type some search keywords for the title you want to find')
 		}
