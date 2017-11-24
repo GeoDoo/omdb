@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import searchByTitleReducer from './search-by-title-reducer'
 
 const omdbApp = combineReducers({
-  movies: searchByTitleReducer
+  home: searchByTitleReducer
 })
 
 export default omdbApp

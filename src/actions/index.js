@@ -3,12 +3,10 @@ import {
 	SEARCH_BY_TITLE
 } from './types'
 
-export (string, num) => {
-	return const req = api.fetchMoviesByStringSearch(string, num)
-		.then(() => {
-			return ({
-				type: SEARCH_BY_TITLE,
-				payload: movies
-			})
+export const fetchResults = (string, num) => {
+	const request = api.fetchMoviesByStringSearch(string, num)
+	return ({
+		type: SEARCH_BY_TITLE,
+		payload: request
 	})
 }
